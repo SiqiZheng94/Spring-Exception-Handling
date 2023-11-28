@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 @RequestMapping("/api/cars")
 public class CarController {
 
-    @GetMapping("{brand}")
+    @GetMapping("/{brand}")
     String getCarBrand(@PathVariable String brand) {
         if (!brand.equals("porsche")) {
             throw new IllegalArgumentException("Only 'porsche' allowed");
