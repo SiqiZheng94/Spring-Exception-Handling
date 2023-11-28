@@ -12,19 +12,17 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @SpringBootTest
 @AutoConfigureMockMvc
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-
-public class AnimalControllerTest {
+public class CarControllerTest {
     @Autowired
     private MockMvc mockMvc;
-    private String baseUrl="/api";
+    private String baseUrl="/api/cars";
     @Test
-    void getAllAnimal_returnMessage_whenCalled() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(baseUrl+"/animals"))
+    void getCarBrand_returnMessage_whenBMW() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get(baseUrl+"/BMW"))
                 .andExpect(MockMvcResultMatchers.status().is5xxServerError())
                 .andExpect(MockMvcResultMatchers.content().json("""
-{"message":"No Animals found"}
+{"message":"Only 'porsche' allowed"}
+
 """));
     }
-
-
 }
